@@ -20,15 +20,9 @@ export default function VideoDetail() {
   const { id } = useParams();
 
   const response = async () => {
-    const response = await fetchapi(
-      `videos?part=snippet,statistics&rapidapi-key=${
-        import.meta.env.VITE_RAPID_API_KEY
-      }&id=${id}`
-    );
+    const response = await fetchapi(`videos?part=snippet,statistics&id=${id}`);
     const responseRelated = await fetchapi(
-      `search?part=snippet&rapidapi-key=${
-        import.meta.env.VITE_RAPID_API_KEY
-      }&relatedToVideoId=${id}&type=video`
+      `search?part=snippet&relatedToVideoId=${id}&type=video`
     );
     setVideoDetail(response.items[0]);
     setVideos(responseRelated.items);

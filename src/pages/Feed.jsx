@@ -10,9 +10,7 @@ export default function Feed() {
 
   const response = async () => {
     const response = await fetchapi(
-      `search?part=snippet&rapidapi-key=${
-        import.meta.env.VITE_RAPID_API_KEY
-      }&q=${selectedCategory}`
+      `search?part=snippet&q=${selectedCategory}`
     );
     setVideos(response.items);
   };
